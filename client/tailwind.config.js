@@ -8,6 +8,7 @@ export default {
     extend: {
       colors : {
         dark : '#222831',
+        lighterDark: '#31363F',
         light : '#eaeaea',
         lightHover : '#dedede'
       },
