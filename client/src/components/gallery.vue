@@ -3,12 +3,13 @@
     <div class="px-20 w-full md:columns-3 sm:columns-1">
         <div v-for="(card, i) in cards" :key="i" class="w-full">
         <div class="w-full p-2" id="item">
-            <Cards @click="[showModal = true, modalImg = card.image]" :link="card.image" class="w-full h-full"></Cards>
+            <Cards @click="[showModal = true, modalImg = card.image, modalTitle = card.title, modalDsc = card.desc, modalAuth=card.author]" :link="card.image" class="w-full h-full"></Cards>
         </div>
         </div>
     </div>
+    
     <div v-if="showModal" @click="showModal = false" class="fixed inset-0 bg-black opacity-50 z-40"></div>
-    <PostModal v-if="showModal" @hideModal="ModalTrigger" :image="modalImg"></PostModal>
+    <PostModal v-if="showModal" @hideModal="ModalTrigger" :image="modalImg" :imgtitle="modalTitle" :imgdesc="modalDsc"></PostModal>
     
 </template>
 
@@ -24,7 +25,10 @@ export default {
     data() {
         return {
             showModal: false,
-            modalImg: {},
+            modalImg: '',
+            modalTitle: '',
+            modalDsc: '',
+            modalAuth: '', 
             cards : []
         }
     },

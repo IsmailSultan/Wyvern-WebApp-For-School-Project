@@ -6,13 +6,13 @@
             <img :src="image" alt="Post image" class="w-full h-full object-cover rounded-s-lg">
           </div>
           <div class="w-1/2 pl-8 p-8 relative">
-            <h2 class="text-2xl font-bold mb-2">Post Title</h2>
+            <h2 class="text-2xl font-bold mb-2">{{ imgtitle }}</h2>
             <button class="absolute top-0 right-0 mt-8 mr-8" @click="hideModal">
                 <span class="material-symbols-outlined items-right">close</span>
             </button>
-            <p class="text-gray-600 mb-2">Posted by: John Doe</p>
+            <p class="text-gray-600 mb-2">Posted by: {{ imgAuth }}</p>
             <p class="text-gray-600">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, magna a ullamcorper laoreet, lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, magna a ullamcorper laoreet, lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              {{ imgdesc }}
             </p>
           </div>
         </div>
@@ -23,7 +23,7 @@
 <script>
 export default {
     props: 
-        ['image'],
+        ['image', 'imgtitle', 'imgdesc', 'imgAuth'],
     methods : {
         hideModal() {
             this.$emit('hideModal')
