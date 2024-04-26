@@ -21,7 +21,12 @@
             </RouterLink>
         </div>
         <div class="flex items-center" style="font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 48;">
-            <button type="button" name="button" class="rounded-full hover:bg-light flex items-center justify-center p-3 m-1"><span class="material-symbols-outlined text-muted text-dark">login</span></button>
+            <router-link to="/CreatePost">
+                <button type="button" name="button" class="rounded-full hover:bg-light flex items-center justify-center p-3 ml-2"><span class="material-symbols-outlined text-muted text-dark">add</span></button>
+            </router-link>
+            <router-link to="/login">
+                <button type="button" name="button" class="rounded-full hover:bg-light flex items-center justify-center p-3"><span class="material-symbols-outlined text-muted text-dark">login</span></button>
+            </router-link>
             <button type="button" name="button" class="rounded-full hover:bg-light flex items-center justify-center p-3 "><span class="material-symbols-outlined text-muted text-dark">help</span></button>
         </div>
     </div>

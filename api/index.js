@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 // const multer = require ('multer')
 // const upload = multer({dest: 'uploads/'})
 
+var currentUser = {}
+
 // models
 const Posts = require("./models/posts.js");
 const Users = require("./models/users.js")
@@ -31,8 +33,26 @@ async function main() {
     await mongoose.connect(mongodb, {useNewUrlParser : true})
     // await createGenre()
     // await createUser()
-    // await createPost()
+    // await CreatePost()
     
+}
+
+async function CreatePost(){
+    const usar = await Users.find({username : "Ismail Sultan"})
+    var usar2 = usar[0]
+    const ganra = await Genre.find({name : "Architecture"})
+    var ganra2 = ganra[0]
+    // console.log(fetchGenreId("Yoga"))
+    const post = new Posts({
+        title : 'Architecture For You',
+        desc : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictumst quisque sagittis purus sit amet volutpat consequat mauris nunc. Felis imperdiet proin fermentum leo vel orci porta.',
+        author : usar2._id,
+        genres : ganra2._id,
+        image : 'https://images.unsplash.com/photo-1713769931230-eea2834a69af'
+    })
+
+    await post.save()
+    console.log("Done Post")
 }
 
 db = mongoose.connection
@@ -44,30 +64,6 @@ db.on('error', err => {
     console.error('Connection Error :',err)
 })
 
-function fetchGenreId(genname){
-    Genre.find({name : genname}).lean().exec(function(error, records) {
-        records.forEach(function(record) {
-
-          console.log(record._id);
-          return record._id;
-        });
-    });
-}
-
-function fetchUserId(username){
-    Users.find({username : username}).lean().exec(function(error, records) {
-        records.forEach(function(record) {
-
-          console.log(record._id);
-          return record._id;
-        });
-    });
-}
-
-app.get('/', (req,res) => {
-    // res.sendFile(path.join(__dirname,'..','client','/index.html'))
-    // console.log(path.join(__dirname,'/index.html'))
-})
 
 app.get('/api/Wyvern/getUsers', (req, res) => {
     Users.find({}).then((resp, err) => {
@@ -79,11 +75,27 @@ app.get('/api/Wyvern/getUsers', (req, res) => {
 
 app.get('/api/Wyvern/getPosts', (req, res) => {
     Posts.find({}).then((resp,err)=>{
+        res.json(resp)
         console.log(resp)
     })
 })
 
-app.get('/api/Wyvern/addUser', (req,res) => {
+app.post('/api/login', async (req, res) => {
+    const {name,password} = req.body
+
+    try {
+        usa = await Users.findOne({username : name})
+        if (usa.password === password) {
+            res.status(200).json(usa)
+            console.log("Successfull")
+            currentUser = usa
+        } else {
+            res.status(400).json({message : "Wrong Password"})
+            console.log("Wrong Password")
+        }
+    } catch (error) {
+        console.log(error)
+    }
     
 })
 
@@ -100,11 +112,14 @@ app.post('/api/signUp', async (req, res) => {
       const savedUser = await newUser.save();
       res.status(201).json(savedUser);
       console.log("Successful")
+      currentUser = savedUser
     } catch (error) {
       res.status(400).json({ message: error.message });
       console.log(error)
     }
 });
+
+
   
 
 app.listen('4000',()=>{

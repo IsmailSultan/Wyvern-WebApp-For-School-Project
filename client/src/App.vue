@@ -1,6 +1,6 @@
 
 <template>
-  <TopNav ></TopNav>
+  <TopNav></TopNav>
   <router-view></router-view>
 </template>
 
@@ -9,9 +9,17 @@ import topNav from './components/topNav.vue'
 
 export default {
   name : 'App',
+  // data : {
+  //   user : String,
+  // },
   components : {
     TopNav : topNav
   }
+  // methods : {
+  //   handleUser(data) {
+
+  //   }
+  // }
 }
 </script>
 
