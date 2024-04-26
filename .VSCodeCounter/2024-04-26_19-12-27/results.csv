@@ -1,0 +1,31 @@
+"filename", "language", "Markdown", "JavaScript", "Vue", "CSS", "XML", "JSON", "HTML", "comment", "blank", "total"
+"c:\Programming\School Hackathon\README.md", "Markdown", 13, 0, 0, 0, 0, 0, 0, 0, 2, 15
+"c:\Programming\School Hackathon\api\index.js", "JavaScript", 0, 92, 0, 0, 0, 0, 0, 9, 26, 127
+"c:\Programming\School Hackathon\api\models\genre.js", "JavaScript", 0, 13, 0, 0, 0, 0, 0, 0, 3, 16
+"c:\Programming\School Hackathon\api\models\posts.js", "JavaScript", 0, 30, 0, 0, 0, 0, 0, 0, 3, 33
+"c:\Programming\School Hackathon\api\models\users.js", "JavaScript", 0, 22, 0, 0, 0, 0, 0, 0, 3, 25
+"c:\Programming\School Hackathon\api\package-lock.json", "JSON", 0, 0, 0, 0, 0, 2538, 0, 0, 1, 2539
+"c:\Programming\School Hackathon\api\package.json", "JSON", 0, 0, 0, 0, 0, 19, 0, 0, 1, 20
+"c:\Programming\School Hackathon\client\index.html", "HTML", 0, 0, 0, 0, 0, 0, 17, 0, 1, 18
+"c:\Programming\School Hackathon\client\package-lock.json", "JSON", 0, 0, 0, 0, 0, 2530, 0, 0, 1, 2531
+"c:\Programming\School Hackathon\client\package.json", "JSON", 0, 0, 0, 0, 0, 23, 0, 0, 1, 24
+"c:\Programming\School Hackathon\client\postcss.config.js", "JavaScript", 0, 6, 0, 0, 0, 0, 0, 0, 1, 7
+"c:\Programming\School Hackathon\client\public\vite.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\Programming\School Hackathon\client\src\App.vue", "Vue", 0, 0, 15, 0, 0, 0, 0, 7, 7, 29
+"c:\Programming\School Hackathon\client\src\assets\vue.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\Programming\School Hackathon\client\src\components\HelloWorld.vue", "Vue", 0, 0, 34, 0, 0, 0, 0, 0, 7, 41
+"c:\Programming\School Hackathon\client\src\components\card.vue", "Vue", 0, 0, 18, 0, 0, 0, 0, 0, 3, 21
+"c:\Programming\School Hackathon\client\src\components\gallery.vue", "Vue", 0, 0, 43, 0, 0, 0, 0, 1, 7, 51
+"c:\Programming\School Hackathon\client\src\components\postModal.vue", "Vue", 0, 0, 32, 0, 0, 0, 0, 0, 2, 34
+"c:\Programming\School Hackathon\client\src\components\topNav.vue", "Vue", 0, 0, 45, 0, 0, 0, 0, 0, 4, 49
+"c:\Programming\School Hackathon\client\src\index.css", "CSS", 0, 0, 0, 3, 0, 0, 0, 0, 0, 3
+"c:\Programming\School Hackathon\client\src\main.js", "JavaScript", 0, 22, 0, 0, 0, 0, 0, 0, 5, 27
+"c:\Programming\School Hackathon\client\src\style.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Programming\School Hackathon\client\src\views\explore.vue", "Vue", 0, 0, 13, 0, 0, 0, 0, 0, 3, 16
+"c:\Programming\School Hackathon\client\src\views\landing.vue", "Vue", 0, 0, 25, 0, 0, 0, 0, 0, 4, 29
+"c:\Programming\School Hackathon\client\src\views\login.vue", "Vue", 0, 0, 45, 0, 0, 0, 0, 1, 10, 56
+"c:\Programming\School Hackathon\client\src\views\search.vue", "Vue", 0, 0, 24, 0, 0, 0, 0, 0, 7, 31
+"c:\Programming\School Hackathon\client\src\views\signup.vue", "Vue", 0, 0, 50, 0, 0, 0, 0, 0, 14, 64
+"c:\Programming\School Hackathon\client\tailwind.config.js", "JavaScript", 0, 17, 0, 0, 0, 0, 0, 1, 1, 19
+"c:\Programming\School Hackathon\client\vite.config.js", "JavaScript", 0, 5, 0, 0, 0, 0, 0, 1, 2, 8
+"Total", "-", 13, 207, 344, 3, 2, 5110, 17, 20, 120, 5836

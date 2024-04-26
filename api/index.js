@@ -1,11 +1,8 @@
 var Express = require("express")
-// var Mongoclient = require("mongodb").MongoClient
 var mongoose = require("mongoose")
 var cors = require("cors")
 const path = require('path');
 const bodyParser = require('body-parser');
-// const multer = require ('multer')
-// const upload = multer({dest: 'uploads/'})
 
 var currentUser = {}
 
@@ -13,11 +10,6 @@ var currentUser = {}
 const Posts = require("./models/posts.js");
 const Users = require("./models/users.js")
 const Genre = require("./models/genre.js")
-
-const posts = []
-const users = []
-const genres = []
-
 
 var app = Express()
 app.use(cors())
@@ -65,14 +57,6 @@ db.on('error', err => {
 })
 
 
-app.get('/api/Wyvern/getUsers', (req, res) => {
-    Users.find({}).then((resp, err) => {
-        console.log(resp)
-        console.log(err)
-        res.redirect('/')
-    })
-})
-
 app.get('/api/Wyvern/getPosts', (req, res) => {
     Posts.find({}).then((resp,err)=>{
         res.json(resp)
@@ -80,8 +64,13 @@ app.get('/api/Wyvern/getPosts', (req, res) => {
     })
 })
 
+app.get('/api/Wyvern/auth', (req,res) => {
+    res.json(currentUser)
+})
+
 app.post('/api/login', async (req, res) => {
     const {name,password} = req.body
+    console.log(req.body)
 
     try {
         usa = await Users.findOne({username : name})
@@ -119,8 +108,6 @@ app.post('/api/signUp', async (req, res) => {
     }
 });
 
-
-  
 
 app.listen('4000',()=>{
     console.log("connected")

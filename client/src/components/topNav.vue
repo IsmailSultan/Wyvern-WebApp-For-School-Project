@@ -24,15 +24,17 @@
             <router-link to="/CreatePost">
                 <button type="button" name="button" class="rounded-full hover:bg-light flex items-center justify-center p-3 ml-2"><span class="material-symbols-outlined text-muted text-dark">add</span></button>
             </router-link>
-            <router-link to="/login">
-                <button type="button" name="button" class="rounded-full hover:bg-light flex items-center justify-center p-3"><span class="material-symbols-outlined text-muted text-dark">login</span></button>
+            <router-link to="/login" redirectFrom="/home">
+                <button v-if="loggedIn === false" type="button" name="button" class="rounded-full hover:bg-light flex items-center justify-center p-3"><span class="material-symbols-outlined text-muted text-dark">login</span></button>
             </router-link>
+            <button v-if="loggedIn" type="button" name="button" class="rounded-full hover:bg-light flex items-center justify-center p-3"><span class="material-symbols-outlined text-muted text-dark">account_circle</span></button>
             <button type="button" name="button" class="rounded-full hover:bg-light flex items-center justify-center p-3 "><span class="material-symbols-outlined text-muted text-dark">help</span></button>
         </div>
     </div>
 </template>
 
 <script>
+import { onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 
 export default {
@@ -42,8 +44,25 @@ export default {
                 {name : 'Home', key : 'home'},
                 {name : 'Explore', key : 'explore'},
             ],
-            selectedTab : 'home'
+            selectedTab : 'home',
+            loggedIn: false
         }
+        
+    },
+    async created() {
+        onMounted: {
+            const response = await fetch('http://localhost:4000/api/Wyvern/auth')
+            const data = await response.json()
+            if (Object.keys(data).length === 0){
+                this.loggedIn = false
+            } else {
+                this.loggedIn = true
+            }
+            console.log(data)
+        }
+        
+    },
+    methods : {
     }
 }
 </script>
