@@ -16,11 +16,15 @@
 <script>
 import Cards from './card.vue'
 import PostModal from './postModal.vue'
+import axios from 'axios'
 
 export default {
     components: {
         Cards,
         PostModal
+    },
+    props : {
+        postsFilter : ''
     },
     data() {
         return {
@@ -32,9 +36,28 @@ export default {
             cards : []
         }
     },
+    watch: {
+        postsFilter: {
+            async handler(newVal) {
+                console.log("newval",newVal)
+                const response = await axios.post('http://localhost:4000/api/Wyvern/getPosts', {
+                    filter : newVal
+                })
+                const data = response.data
+                this.cards = data
+                console.log("new cards",data)
+            },
+            immediate: true,
+        }
+    },
+
     async created(){
-        const response = await fetch('http://localhost:4000/api/Wyvern/getPosts')
-        const data = await response.json()
+        // console.log("postfilter : ", this.postsFilter)
+        const response = await axios.post('http://localhost:4000/api/Wyvern/getPosts', {
+                filter : this.postsFilter
+        })
+        const data = response.data
+        // console.log(data)
         this.cards = data
     },
     methods: {

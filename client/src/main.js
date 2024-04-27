@@ -16,19 +16,20 @@ import App from './App.vue';
 
 import explore from './views/explore.vue';
 import landing from './views/landing.vue';
-import search from './views/search.vue';
+// import search from './views/search.vue';
 import login from './views/login.vue';
 import signup from './views/signup.vue';
 import createPost from './views/createPost.vue'
+import posts from './views/posts.vue'
 
 const routes = [
     {path:'/explore', component: explore},
-    {path:'/search', component: search},
     {path:'/', component: landing},
     {path:'/home', component: landing},
     {path:'/login', component: login},
     {path:'/signup', component: signup},
-    {path:'/CreatePost', component: createPost}
+    {path:'/CreatePost', component: createPost},
+    {path:'/posts/:id', component: posts}
 ]
 
 const router = createRouter({

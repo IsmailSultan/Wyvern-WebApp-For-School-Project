@@ -72,11 +72,27 @@ db.on('error', err => {
 })
 
 
-app.get('/api/Wyvern/getPosts', (req, res) => {
-    Posts.find({}).then((resp,err)=>{
-        res.json(resp)
-        // console.log(resp)
-    })
+app.post('/api/Wyvern/getPosts', (req, res) => {
+    // console.log("req : ", req)
+    if (req.body.filter === ""){
+        Posts.find({}).then((resp,err)=>{
+            res.status(201).json(resp)
+            // console.log(resp)
+        })
+    } else {
+        var genQ = []
+        Genre.find({name : req.body.filter}).then((respo, err) => {
+            genQ = respo[0]
+            Posts.find({genres : genQ._id}).then((resp,err)=>{
+                res.status(201).json(resp)
+                console.log("server response : ",resp)
+    
+                // console.log(resp)
+            })
+        })
+
+        
+    }
 })
 
 app.get('/api/Wyvern/auth', (req,res) => {

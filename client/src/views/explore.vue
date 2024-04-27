@@ -1,5 +1,5 @@
 <template>
-    <gallery></gallery>
+    <gallery postsFilter=""></gallery>
 </template>
 
 <script>

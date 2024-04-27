@@ -16,9 +16,9 @@
         </div>
         <div class="flex-grow relative ml-2" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 50, 'opsz' 48;">
             <span class="material-symbols-outlined absolute mt-3 ml-3 text-muted" style="opacity: 40%;">search</span>
-            <RouterLink to="/search"> 
-                <input type="text" class="w-full hover:bg-lightHover rounded-full bg-light py-3 pr-3 pl-10" placeholder="Search">
-            </RouterLink>
+            <form @submit.prevent="handleSearch" class="">
+                <input type="text" class="w-full hover:bg-lightHover rounded-full bg-light py-3 pr-3 pl-10" placeholder="Search" @key.enter.exact.prevent="handleSearch" v-model="searchQuery">
+            </form>
         </div>
         <div class="flex items-center" style="font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 48;">
             <router-link to="/CreatePost">
@@ -45,7 +45,8 @@ export default {
                 {name : 'Explore', key : 'explore'},
             ],
             selectedTab : 'home',
-            loggedIn: false
+            loggedIn: false,
+            searchQuery : ''
         }
         
     },
@@ -63,6 +64,9 @@ export default {
         
     },
     methods : {
+        handleSearch(){
+            this.$router.push({path : `/posts/${this.searchQuery}`})
+        }
     }
 }
 </script>

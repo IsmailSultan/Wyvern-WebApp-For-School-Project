@@ -4,7 +4,7 @@
             <div class="w-full rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-lighterDark dark:border-gray-700">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1 class="text-xl font-semibold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                        Sign in to your account
+                        Log in to your account
                     </h1>
                     <form class="space-y-4 md:space-y-6" @submit.prevent="submitForm">
                         <div>
