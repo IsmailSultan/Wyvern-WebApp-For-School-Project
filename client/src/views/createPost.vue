@@ -32,6 +32,7 @@
 <script>
 import axios from 'axios'
 import dropdown from '../components/dropdown.vue'
+import { createRouter } from 'vue-router'
 
 export default {
     components : {
@@ -70,7 +71,8 @@ export default {
                 genre: this.genre
             })
             const data = response.json()
-            this.$router.push({path : "/explore"})
+            console.log("from createpost", data)
+            this.$router.push({path: "/explore"})
 
         },
         handleArch(){

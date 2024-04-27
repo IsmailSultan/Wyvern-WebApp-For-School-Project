@@ -32,7 +32,7 @@ async function main() {
 async function CreatePost(info){
     const usar = await Users.find({_id : info.author})
     // var usar2 = usar[0]
-    // console.log("hi")
+    console.log("hi create post works")
     var usar2 = usar[0]
     const ganra = await Genre.find({name : info.genreName})
     var ganra2 = ganra[0]

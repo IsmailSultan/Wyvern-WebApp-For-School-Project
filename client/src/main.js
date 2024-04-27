@@ -23,7 +23,7 @@ import createPost from './views/createPost.vue'
 import posts from './views/posts.vue'
 
 const routes = [
-    {path:'/explore', component: explore},
+    {path:'/explore', component: explore, name : 'explore'},
     {path:'/', component: landing},
     {path:'/home', component: landing},
     {path:'/login', component: login},
