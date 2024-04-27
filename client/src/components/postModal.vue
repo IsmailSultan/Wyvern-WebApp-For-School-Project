@@ -3,7 +3,7 @@
       <div class="bg-white rounded-lg shadow-lg  w-full max-w-4xl">
         <div class="flex">
           <div class="w-1/2">
-            <img :src="image" alt="Post image" class="w-full h-full object-cover rounded-s-lg">
+            <img :src="image" alt="Post image" class="w-full h-full object-cover rounded-s-lg max-h-screen">
           </div>
           <div class="w-1/2 pl-8 p-8 relative">
             <h2 class="text-2xl font-bold mb-2">{{ imgtitle }}</h2>

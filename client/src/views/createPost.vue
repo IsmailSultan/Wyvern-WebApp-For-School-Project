@@ -52,7 +52,7 @@ export default {
         const response = await fetch('http://localhost:4000/api/Wyvern/auth')
         const data = await response.json()
         if (Object.keys(data).length === 0) {
-            console.log("User is not logged in")
+            // console.log("User is not logged in")
             this.$router.push({path : '/login'})
         } else {
             console.log(data)
@@ -63,6 +63,7 @@ export default {
     },
     methods : {
         async createPost() {
+            console.log("new text")
             const response = await axios.post('http://localhost:4000/api/Wyvern/CreatePost', {
                 title: this.title,
                 description: this.description,
@@ -70,13 +71,15 @@ export default {
                 author: this.author,
                 genre: this.genre
             })
-            const data = response.json()
-            console.log("from createpost", data)
+            const data = response.data
+            // console.log("from createpost", data)
+            // console.log("From below")
             this.$router.push({path: "/explore"})
+            // this.$router.push({ name: 'foo' })
 
         },
         handleArch(){
-        this.genre = "Yoga"
+        this.genre = "Architecture"
         },
         handleArt(){
         this.genre = "Art"

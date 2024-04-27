@@ -27,14 +27,16 @@
             <router-link to="/login" redirectFrom="/home">
                 <button v-if="loggedIn === false" type="button" name="button" class="rounded-full hover:bg-light flex items-center justify-center p-3"><span class="material-symbols-outlined text-muted text-dark">login</span></button>
             </router-link>
-            <button v-if="loggedIn" type="button" name="button" class="rounded-full hover:bg-light flex items-center justify-center p-3"><span class="material-symbols-outlined text-muted text-dark">account_circle</span></button>
-            <button type="button" name="button" class="rounded-full hover:bg-light flex items-center justify-center p-3 "><span class="material-symbols-outlined text-muted text-dark">help</span></button>
+            <button type="button" name="button" class="rounded-full hover:bg-light flex items-center justify-center p-3 j-10"><span class="material-symbols-outlined text-muted text-dark">help</span></button>
+            <router-link :to="`/profile/${profileUser}/${profileId}`">
+            <button v-if="loggedIn" type="button" name="button" class="rounded-full hover:bg-light flex items-center justify-center p-3"><img :src="`https://ui-avatars.com/api/?background=random&length=1&name=${profileImage}`" class="rounded-full h-8" alt="profile-image"></button>
+            </router-link>
         </div>
     </div>
 </template>
 
 <script>
-import { onMounted } from 'vue';
+// import { onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 
 export default {
@@ -46,7 +48,10 @@ export default {
             ],
             selectedTab : 'home',
             loggedIn: false,
-            searchQuery : ''
+            searchQuery : '',
+            profileImage : '',
+            profileUser : '',
+            profileId : ''
         }
         
     },
@@ -58,14 +63,31 @@ export default {
                 this.loggedIn = false
             } else {
                 this.loggedIn = true
+                this.profileImage = data.username.replace(/\s+/, "")
+                // console.log(this)
+                this.profileUser = data.username
+                this.profileId = data._id
+                console.log("pf : ",this.profileImage)
             }
             console.log(data)
         }
         
     },
+
     methods : {
         handleSearch(){
+            if(this.searchQuery.toLowerCase().includes('art')){
+                this.searchQuery = "Art"
+            } else if (this.searchQuery.toLowerCase().includes('yoga')) {
+                this.searchQuery = "Yoga"
+            } else if (this.searchQuery.toLowerCase().includes('music') || this.searchQuery.toLowerCase().includes('dance')) {
+                this.searchQuery = "MusicDance"
+            } else if (this.searchQuery.toLowerCase().includes('architecture')) {
+                this.searchQuery = "Architecture"
+            }
+            console.log(this.searchQuery)
             this.$router.push({path : `/posts/${this.searchQuery}`})
+            this.searchQuery = ""
         }
     }
 }

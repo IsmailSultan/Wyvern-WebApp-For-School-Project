@@ -21,6 +21,7 @@ import login from './views/login.vue';
 import signup from './views/signup.vue';
 import createPost from './views/createPost.vue'
 import posts from './views/posts.vue'
+import profile from './views/profile.vue'
 
 const routes = [
     {path:'/explore', component: explore, name : 'explore'},
@@ -29,7 +30,8 @@ const routes = [
     {path:'/login', component: login},
     {path:'/signup', component: signup},
     {path:'/CreatePost', component: createPost},
-    {path:'/posts/:id', component: posts}
+    {path:'/posts/:id', component: posts},
+    {path:'/profile/:username/:id', component: profile}
 ]
 
 const router = createRouter({

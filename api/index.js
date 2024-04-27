@@ -29,6 +29,25 @@ async function main() {
     
 }
 
+function createGenre(){
+    const yoga = new Genre({
+        name : "Yoga"
+    })
+    yoga.save()
+    const art = new Genre({
+        name : "Art"
+    })
+    art.save()
+    const music = new Genre({
+        name : "MusicDance"
+    })
+    music.save()
+    const architecture = new Genre({
+        name : "Architecture"
+    })
+    architecture.save()
+}
+
 async function CreatePost(info){
     const usar = await Users.find({_id : info.author})
     // var usar2 = usar[0]
@@ -46,20 +65,24 @@ async function CreatePost(info){
         image : info.imageLink
     })
 
-    await post.save()
+    const newPost = await post.save()
+
     console.log("Done Post")
+    return newPost
 }
 
 app.post("/api/Wyvern/CreatePost", (req,res) => {
     const {title,description,image,author,genre} = req.body
     // console.log(req.body)
-    CreatePost({
+    const newPostRes = CreatePost({
         genreName : genre,
         title : title,
         description : description,
         imageLink : image,
         author : author
     })
+
+    res.json(newPostRes)
 })
 
 db = mongoose.connection
@@ -73,19 +96,21 @@ db.on('error', err => {
 
 
 app.post('/api/Wyvern/getPosts', (req, res) => {
-    // console.log("req : ", req)
+    console.log("reqFromGetPosts : ", req.body)
     if (req.body.filter === ""){
+        console.log("fromIndexIf",req.body.message)
         Posts.find({}).then((resp,err)=>{
+            // console.log("posts find res : ",resp)
             res.status(201).json(resp)
-            // console.log(resp)
         })
     } else {
         var genQ = []
+        console.log("fromIndexElse",req.body.message)
         Genre.find({name : req.body.filter}).then((respo, err) => {
             genQ = respo[0]
             Posts.find({genres : genQ._id}).then((resp,err)=>{
                 res.status(201).json(resp)
-                console.log("server response : ",resp)
+                // console.log("server response : ",resp)
     
                 // console.log(resp)
             })
@@ -93,6 +118,15 @@ app.post('/api/Wyvern/getPosts', (req, res) => {
 
         
     }
+})
+
+app.post('/api/Wyvern/getPostsById', (req, res) => {
+    console.log("req : ", req.body.filter.profileId)
+        console.log("if trig")
+        Posts.find({author : req.body.filter.profileId}).then((resp,err)=>{
+            console.log("posts find res : ",resp)
+            res.status(201).json(resp)
+        })
 })
 
 app.get('/api/Wyvern/auth', (req,res) => {
