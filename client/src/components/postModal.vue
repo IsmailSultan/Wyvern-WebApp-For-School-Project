@@ -10,7 +10,7 @@
             <button class="absolute top-0 right-0 mt-8 mr-8" @click="hideModal">
                 <span class="material-symbols-outlined items-right">close</span>
             </button>
-            <p class="text-gray-600 mb-2">Posted by: {{ imgAuth }}</p>
+            <p class="text-gray-600 mb-2">Posted by: {{ imgauthor }}</p>
             <p class="text-gray-600">
               {{ imgdesc }}
             </p>
@@ -21,9 +21,26 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
     props: 
         ['image', 'imgtitle', 'imgdesc', 'imgAuth'],
+    data() {
+      return {
+        imgauthor: ''
+      }
+    },
+    async created(){
+        console.log("imageAuth :",this.imgAuth)
+        const response = await axios.post('http://localhost:4000/api/Wyvern/getusername',{
+          id: this.imgAuth
+        })
+        const data = response.data[0].username
+        this.imgauthor = data
+        // console.log(data)
+        // this.imgauthor = data[0].username
+    },
     methods : {
         hideModal() {
             this.$emit('hideModal')

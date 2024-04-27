@@ -9,7 +9,7 @@
     </div>
     
     <div v-if="showModal" @click="showModal = false" class="fixed inset-0 bg-black opacity-50 z-40"></div>
-    <PostModal v-if="showModal" @hideModal="ModalTrigger" :image="modalImg" :imgtitle="modalTitle" :imgdesc="modalDsc"></PostModal>
+    <PostModal v-if="showModal" @hideModal="ModalTrigger" :image="modalImg" :imgtitle="modalTitle" :imgdesc="modalDsc" :imgAuth="modalAuth"></PostModal>
     
 </template>
 

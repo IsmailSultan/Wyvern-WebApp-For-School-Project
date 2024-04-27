@@ -75,12 +75,20 @@ db.on('error', err => {
 app.get('/api/Wyvern/getPosts', (req, res) => {
     Posts.find({}).then((resp,err)=>{
         res.json(resp)
-        console.log(resp)
+        // console.log(resp)
     })
 })
 
 app.get('/api/Wyvern/auth', (req,res) => {
     res.json(currentUser)
+})
+
+app.post('/api/Wyvern/getusername', (req, res) => {
+    // console.log(req.body)
+    Users.find({"_id" : req.body.id}).then((resp,err)=>{
+        res.json(resp)
+        // console.log(resp)
+    })
 })
 
 app.post('/api/login', async (req, res) => {
@@ -125,5 +133,5 @@ app.post('/api/signUp', async (req, res) => {
 
 
 app.listen('4000',()=>{
-    console.log("connected")
+    console.log("connected on port 4000")
 })
