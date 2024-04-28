@@ -10,7 +10,9 @@
             <button class="absolute top-0 right-0 mt-8 mr-8" @click="hideModal">
                 <span class="material-symbols-outlined items-right">close</span>
             </button>
-            <a class="text-gray-600 mb-2">Posted by: {{ imgauthor }}</a>
+            <router-link :to="`/profile/${imgauthor}/${imgAuth}`">
+            <button class="text-gray-600 mb-2">Posted by: <span class="hover:underline"> {{ imgauthor }}</span></button>
+            </router-link>
             <p class="text-gray-600">
               {{ imgdesc }}
             </p>

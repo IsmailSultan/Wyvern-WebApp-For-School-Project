@@ -11,6 +11,7 @@ import createPost from './views/createPost.vue'
 import posts from './views/posts.vue'
 import profile from './views/profile.vue'
 import contact from './views/contact.vue'
+import Loggedin from './components/InBetweens/loggedin.vue';
 
 const routes = [
     {path:'/explore', component: explore, name : 'explore'},
@@ -22,7 +23,8 @@ const routes = [
     {path:'/CreatePost', component: createPost, name : "createpost"},
     {path:'/posts/:id', component: posts, name : "search"},
     {path:'/profile/:username/:id', component: profile, name : "profile"},
-    {path:'/contact', component: contact, name : "contact"}
+    {path:'/contact', component: contact, name : "contact"},
+    // {path:'/temporary', component: Loggedin}
 ]
 
 const router = createRouter({

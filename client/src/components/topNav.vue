@@ -27,7 +27,9 @@
             <router-link to="/login" redirectFrom="/home">
                 <button v-if="loggedIn === false" type="button" name="button" class="rounded-full hover:bg-light flex items-center justify-center p-3"><span class="material-symbols-outlined text-muted text-dark">login</span></button>
             </router-link>
+            <router-link to="/contact">
             <button type="button" name="button" class="rounded-full hover:bg-light flex items-center justify-center p-3 j-10"><span class="material-symbols-outlined text-muted text-dark">help</span></button>
+            </router-link>
             <router-link :to="`/profile/${profileUser}/${profileId}`">
             <button v-if="loggedIn" type="button" name="button" class="rounded-full hover:bg-light flex items-center justify-center p-3"><img :src="`https://ui-avatars.com/api/?background=random&length=1&name=${profileImage}`" class="rounded-full h-8" alt="profile-image"></button>
             </router-link>

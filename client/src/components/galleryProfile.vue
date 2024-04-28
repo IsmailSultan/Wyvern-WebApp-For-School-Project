@@ -43,7 +43,7 @@ export default {
             async handler(naw) {
                 console.log("should run")
                 console.log("routeId",this.$route.params.id)
-                console.log("newvalFilterById",newVal)
+                console.log("newvalFilterById",naw)
                 const response = await axios.post('http://localhost:4000/api/Wyvern/getPostsbyId', {
                     filter : this.$route.params.id,
                     message : "this is from ById"
