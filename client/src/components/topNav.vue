@@ -55,6 +55,28 @@ export default {
         }
         
     },
+    watch : {
+        $route : {
+            async handler(newVal) {
+                this.selectedTab = newVal.name
+                if (newVal.params.login != ''){
+                    const response = await fetch('http://localhost:4000/api/Wyvern/auth')
+                    const data = await response.json()
+                    if (Object.keys(data).length === 0){
+                        this.loggedIn = false
+                    } else {
+                        this.loggedIn = true
+                        this.profileImage = data.username.replace(/\s+/, "")
+                        this.profileUser = data.username
+                        this.profileId = data._id
+                        console.log("pf : ",this.profileImage)
+                    }
+                    console.log(data)
+                }
+            },
+            immediate : true 
+        }
+    },
     async created() {
         onMounted: {
             const response = await fetch('http://localhost:4000/api/Wyvern/auth')
@@ -88,7 +110,7 @@ export default {
             console.log(this.searchQuery)
             this.$router.push({path : `/posts/${this.searchQuery}`})
             this.searchQuery = ""
-        }
+        },
     }
 }
 </script>

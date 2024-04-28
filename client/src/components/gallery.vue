@@ -52,7 +52,7 @@ export default {
     },
 
     async created(){
-        // console.log("postfilter : ", this.postsFilter)
+        console.log("this is from created in gallery", this.postsFilter)
         const response = await axios.post('http://localhost:4000/api/Wyvern/getPosts', {
                 filter : this.postsFilter
         })

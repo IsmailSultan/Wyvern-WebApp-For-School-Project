@@ -10,7 +10,7 @@
             <button class="absolute top-0 right-0 mt-8 mr-8" @click="hideModal">
                 <span class="material-symbols-outlined items-right">close</span>
             </button>
-            <p class="text-gray-600 mb-2">Posted by: {{ imgauthor }}</p>
+            <a class="text-gray-600 mb-2">Posted by: {{ imgauthor }}</a>
             <p class="text-gray-600">
               {{ imgdesc }}
             </p>

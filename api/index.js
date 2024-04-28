@@ -6,47 +6,59 @@ const bodyParser = require('body-parser');
 
 var currentUser = {}
 
-// models
-const Posts = require("./models/posts.js");
+// Database Models
+const Posts = require("./models/posts.js")
+const ContactPosts = require("./models/contact.js")
 const Users = require("./models/users.js")
 const Genre = require("./models/genre.js")
 
+// Express App 
 var app = Express()
 app.use(cors())
 app.use(bodyParser.json())
 
+// Mongoose Setup 
 mongoose.set("strictQuery", false);
-
 const mongodb = 'mongodb://127.0.0.1/Wyvern'
-// const Schema = mongoose.Schema
 
 main().catch((err) => console.log(err))
 async function main() {
     await mongoose.connect(mongodb, {useNewUrlParser : true})
     // await createGenre()
     // await createUser()
-    // await CreatePost()
-    
+    // await CreatePost()  
 }
 
-function createGenre(){
-    const yoga = new Genre({
-        name : "Yoga"
-    })
-    yoga.save()
-    const art = new Genre({
-        name : "Art"
-    })
-    art.save()
-    const music = new Genre({
-        name : "MusicDance"
-    })
-    music.save()
-    const architecture = new Genre({
-        name : "Architecture"
-    })
-    architecture.save()
-}
+db = mongoose.connection
+db.once('open', _ => {
+    console.log("Database Connected :", mongodb)
+})
+
+db.on('error', err => {
+    console.error('Connection Error :',err)
+})
+
+// Create Genre Function In Case Needed 
+// function createGenre(){
+//     const yoga = new Genre({
+//         name : "Yoga"
+//     })
+//     yoga.save()
+//     const art = new Genre({
+//         name : "Art"
+//     })
+//     art.save()
+//     const music = new Genre({
+//         name : "MusicDance"
+//     })
+//     music.save()
+//     const architecture = new Genre({
+//         name : "Architecture"
+//     })
+//     architecture.save()
+// }
+
+// Create Post Section 
 
 async function CreatePost(info){
     const usar = await Users.find({_id : info.author})
@@ -71,6 +83,25 @@ async function CreatePost(info){
     return newPost
 }
 
+async function CreateContactPost(info){
+    const usar = await Users.find({_id : info.author})
+    // var usar2 = usar[0]
+    console.log("hi create contact post works")
+    var usar2 = usar[0]
+    console.log("usar2Contact", usar2)
+    // console.log(fetchGenreId("Yoga"))
+    const post = new ContactPosts({
+        title : info.title,
+        desc : info.description,
+        author : usar2._id,
+    })
+
+    const newPost = await post.save()
+
+    console.log("Done Post")
+    return newPost
+}
+
 app.post("/api/Wyvern/CreatePost", (req,res) => {
     const {title,description,image,author,genre} = req.body
     // console.log(req.body)
@@ -85,15 +116,18 @@ app.post("/api/Wyvern/CreatePost", (req,res) => {
     res.json(newPostRes)
 })
 
-db = mongoose.connection
-db.once('open', _ => {
-    console.log("Database Connected :", mongodb)
-})
+app.post("/api/Wyvern/CreateContactPost", (req,res) => {
+    const {title,description,author} = req.body
+    // console.log(req.body)
+    const newPostRes = CreateContactPost({
+        title : title,
+        description : description,
+        author : author
+    })
 
-db.on('error', err => {
-    console.error('Connection Error :',err)
+    res.json(newPostRes)
 })
-
+// Get Posts Section 
 
 app.post('/api/Wyvern/getPosts', (req, res) => {
     console.log("reqFromGetPosts : ", req.body)
@@ -115,8 +149,6 @@ app.post('/api/Wyvern/getPosts', (req, res) => {
                 // console.log(resp)
             })
         })
-
-        
     }
 })
 
@@ -129,10 +161,13 @@ app.post('/api/Wyvern/getPostsById', (req, res) => {
         })
 })
 
+
+// User Authentication To Change Navbar/Allow Add Post 
 app.get('/api/Wyvern/auth', (req,res) => {
     res.json(currentUser)
 })
 
+// Get Username From Author Id 
 app.post('/api/Wyvern/getusername', (req, res) => {
     // console.log(req.body)
     Users.find({"_id" : req.body.id}).then((resp,err)=>{
@@ -141,6 +176,7 @@ app.post('/api/Wyvern/getusername', (req, res) => {
     })
 })
 
+// Login Request Handler 
 app.post('/api/login', async (req, res) => {
     const {name,password} = req.body
     console.log(req.body)
@@ -161,6 +197,7 @@ app.post('/api/login', async (req, res) => {
     
 })
 
+// Sign Up Handler 
 app.post('/api/signUp', async (req, res) => {
     const { name, email, password } = req.body;
   
