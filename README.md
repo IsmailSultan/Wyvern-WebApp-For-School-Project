@@ -2,7 +2,8 @@
 Wyvern is a Image sharing platform made primarily as a school project.<br>
 <br>
 Current Tech:<br>
--Vue
+-Vue<br><br>
+Demo: https://youtu.be/zRRVF3JKYuA
 <br><br>
 
 Installation Instructions:
