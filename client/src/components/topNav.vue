@@ -102,17 +102,29 @@ export default {
         handleSearch(){
             if(this.searchQuery.toLowerCase().includes('art')){
                 this.searchQuery = "Art"
+                console.log(this.searchQuery)
+                this.$router.push({path : `/posts/${this.searchQuery}`})
+                this.searchQuery = ""
             } else if (this.searchQuery.toLowerCase().includes('yoga')) {
                 this.searchQuery = "Yoga"
+                console.log(this.searchQuery)
+                this.$router.push({path : `/posts/${this.searchQuery}`})
+                this.searchQuery = ""
             } else if (this.searchQuery.toLowerCase().includes('music') || this.searchQuery.toLowerCase().includes('dance')) {
                 this.searchQuery = "MusicDance"
+                console.log(this.searchQuery)
+                this.$router.push({path : `/posts/${this.searchQuery}`})
+                this.searchQuery = ""
             } else if (this.searchQuery.toLowerCase().includes('architecture')) {
                 this.searchQuery = "Architecture"
+                console.log(this.searchQuery)
+                this.$router.push({path : `/posts/${this.searchQuery}`})
+                this.searchQuery = ""   
+            } else {
+                this.$router.push({path : "/search/itemnotfound"})
             }
-            console.log(this.searchQuery)
-            this.$router.push({path : `/posts/${this.searchQuery}`})
-            this.searchQuery = ""
         },
     }
 }
 </script>
+

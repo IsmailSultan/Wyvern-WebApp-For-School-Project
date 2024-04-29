@@ -12,6 +12,7 @@ import posts from './views/posts.vue'
 import profile from './views/profile.vue'
 import contact from './views/contact.vue'
 import Loggedin from './components/InBetweens/loggedin.vue';
+import itemnotfound from "./components/InBetweens/itemnf.vue";
 
 const routes = [
     {path:'/explore', component: explore, name : 'explore'},
@@ -24,6 +25,7 @@ const routes = [
     {path:'/posts/:id', component: posts, name : "search"},
     {path:'/profile/:username/:id', component: profile, name : "profile"},
     {path:'/contact', component: contact, name : "contact"},
+    {path:'/search/itemnotfound', component: itemnotfound},
     // {path:'/temporary', component: Loggedin}
 ]
 
