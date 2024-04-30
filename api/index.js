@@ -38,26 +38,6 @@ db.on('error', err => {
     console.error('Connection Error :',err)
 })
 
-// Create Genre Function In Case Needed 
-// function createGenre(){
-//     const yoga = new Genre({
-//         name : "Yoga"
-//     })
-//     yoga.save()
-//     const art = new Genre({
-//         name : "Art"
-//     })
-//     art.save()
-//     const music = new Genre({
-//         name : "MusicDance"
-//     })
-//     music.save()
-//     const architecture = new Genre({
-//         name : "Architecture"
-//     })
-//     architecture.save()
-// }
-
 // Create Post Section 
 
 async function CreatePost(info){

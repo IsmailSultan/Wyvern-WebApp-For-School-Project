@@ -52,7 +52,7 @@ export default {
 
             const respo = response;
             this.response = respo
-            this.$router.push({path : '/explore'})
+            this.$router.push({path : '/search'})
             // this.$emit('passUser',respo)
         }
     }

@@ -11,16 +11,17 @@ import createPost from './views/createPost.vue'
 import posts from './views/posts.vue'
 import profile from './views/profile.vue'
 import contact from './views/contact.vue'
-import Loggedin from './components/InBetweens/loggedin.vue';
+import searchCards from './views/searchCards.vue'
 import itemnotfound from "./components/InBetweens/itemnf.vue";
 
 const routes = [
+    {path:'/', component: landing, name : "landing"},
+    {path:'/home', component: landing, name : "home"},
     {path:'/explore', component: explore, name : 'explore'},
     {path:'/explore/:login', component: explore},
-    {path:'/', component: landing, name : "home"},
-    {path:'/home', component: landing, name : "home"},
     {path:'/login', component: login, name : "login"},
     {path:'/signup', component: signup, name : "signup"},
+    {path:'/search', component: searchCards},
     {path:'/CreatePost', component: createPost, name : "createpost"},
     {path:'/posts/:id', component: posts, name : "search"},
     {path:'/profile/:username/:id', component: profile, name : "profile"},

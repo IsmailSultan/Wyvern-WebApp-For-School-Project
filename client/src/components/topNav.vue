@@ -17,7 +17,7 @@
         <div class="flex-grow relative ml-2" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 50, 'opsz' 48;">
             <span class="material-symbols-outlined absolute mt-3 ml-3 text-muted" style="opacity: 40%;">search</span>
             <form @submit.prevent="handleSearch" class="">
-                <input type="text" class="w-full hover:bg-lightHover rounded-full bg-light py-3 pr-3 pl-10" placeholder="Search" @key.enter.exact.prevent="handleSearch" v-model="searchQuery">
+                <input @click = "handleCards"type="text" class="w-full hover:bg-lightHover rounded-full bg-light py-3 pr-3 pl-10" placeholder="Search" @key.enter.exact.prevent="handleSearch" v-model="searchQuery">
             </form>
         </div>
         <div class="flex items-center" style="font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 48;">
@@ -124,6 +124,9 @@ export default {
                 this.$router.push({path : "/search/itemnotfound"})
             }
         },
+        handleCards() {
+            this.$router.push({path : "/search"})
+        }
     }
 }
 </script>
