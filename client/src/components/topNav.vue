@@ -60,7 +60,9 @@ export default {
     watch : {
         $route : {
             async handler(newVal) {
-                this.selectedTab = newVal.name
+                if (newVal === ""){
+                    this.selectedTab = "home"
+                }
                 if (newVal.params.login != ''){
                     const response = await fetch('http://localhost:4000/api/Wyvern/auth')
                     const data = await response.json()
@@ -81,6 +83,7 @@ export default {
     },
     async created() {
         onMounted: {
+            this.selectedTab = "home"
             const response = await fetch('http://localhost:4000/api/Wyvern/auth')
             const data = await response.json()
             if (Object.keys(data).length === 0){

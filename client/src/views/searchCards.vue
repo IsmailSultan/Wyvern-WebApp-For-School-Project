@@ -1,9 +1,9 @@
 <template>
     <div class="flex flex-wrap justify-center">
-      <div v-for="(card, index) in cards" :key="index" class="w-1/4 p-4 mt-16">
+      <div v-for="(card, index) in cards" :key="index" class="w-1/4 p-4" style="margin-top : 5vh;">
         <div class="bg-white shadow-md rounded overflow-hidden" @click="handleSearch(card.genre)">
-          <div class="relative " >
-            <img :src="card.image" alt="Card image" class="w-full h-96 object-cover rounded-xl hover:rounded-lg">
+          <div class="relative" >
+            <img :src="card.image" alt="Card image" style="height : 70vh;" class="w-full object-cover rounded-xl hover:rounded-lg">
             <div class="absolute inset-0 bg-black opacity-0 hover:opacity-50 transition duration-300 rounded-lg">
               <div class="absolute bottom-0 left-0 right-0 p-4">
                 <h2 class="text-lg font-bold text-white opacity-100 mont">{{ card.title }}</h2>

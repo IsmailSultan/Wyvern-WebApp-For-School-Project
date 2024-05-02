@@ -163,16 +163,24 @@ app.post('/api/login', async (req, res) => {
 
     try {
         usa = await Users.findOne({username : name})
-        if (usa.password === password) {
-            res.status(200).json(usa)
-            console.log("Successfull")
-            currentUser = usa
+        console.log("unable to find user", usa)
+        if (usa != null){
+            if (usa.password === password) {
+                res.status(200).json(usa)
+                console.log("Successfull")
+                currentUser = usa
+            } else {
+                res.status(400).json({message : "Wrong Username Or Password"})
+                console.log("Wrong Password")
+            }
         } else {
-            res.status(400).json({message : "Wrong Password"})
+            res.status(400).json({message : "Wrong Username Or Password"})
             console.log("Wrong Password")
         }
+        
     } catch (error) {
         console.log(error)
+        res.status(400).json({message : "User Not Found"})
     }
     
 })

@@ -6,6 +6,14 @@
                     <h1 class="text-xl font-semibold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                         Log in to your account
                     </h1>
+                    <div v-if="showLoggedIn" class="w-full flex items-center bg-green-400 opacity-70 rounded-xl border-2 border-green-500 relative">
+                                <p class="mont text-md font-medium my-3 mx-auto text-dark">Logged In</p>
+                                <span @click="this.showLoggedIn = false" class="material-symbols-outlined absolute text-dark right-0 mr-4 opacity-80">close</span>
+                    </div>
+                    <div v-if="showLoginFailed" class="w-full flex items-center bg-red-400 opacity-70 rounded-xl border-2 border-red-500 relative">
+                                <p class="mont text-md font-medium my-3 mx-auto text-dark">Incorrect User or Password</p>
+                                <span @click="this.showLoginFailed = false" class="material-symbols-outlined absolute text-dark right-0 mr-4 opacity-80">close</span>
+                    </div>
                     <form class="space-y-4 md:space-y-6" @submit.prevent="submitForm">
                         <div>
                             <label for="Username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
@@ -40,19 +48,37 @@ export default {
             name: '',
             password : '',
             response : '',
+            showLoggedIn : false, 
+            showLoginFailed : false
         }
     },
     methods : {
         async submitForm() {
             console.log(password)
-            const response = await axios.post('http://localhost:4000/api/login', {
+            this.showLoggedIn = false
+            this.showLoginFailed = false
+            try {
+                const response = await axios.post('http://localhost:4000/api/login', {
                 name: this.name,
                 password: this.password
             });
-
             const respo = response;
+            // console.log("failed login", respo)
             this.response = respo
-            this.$router.push({path : '/search'})
+            if (respo.status === 200){
+                this.showLoggedIn = true
+                setTimeout(() => {
+                    this.$router.push({path : '/search'})
+                }, 2000);
+            } else {
+                this.showLoginFailed = true
+            }
+            } catch (error) {
+                this.showLoginFailed = true
+            }
+            
+            
+            
             // this.$emit('passUser',respo)
         }
     }
