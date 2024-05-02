@@ -3,8 +3,8 @@
         
         <div class="flex items-center">
             <router-link to="/home">
-                <button class="rounded-full pt-4 pb-4 pl-3 pr-4 flex items-center justify-center">
-                    <img src="../assets/LogowboldDark.png" alt="logo" class="h-4">
+                <button class="rounded-full pl-2 pr-4 flex items-center justify-center">
+                    <img src="../assets/logoEchoDark.png" alt="logo" style="height : 7vh;">
                 </button>
             </router-link>
             
