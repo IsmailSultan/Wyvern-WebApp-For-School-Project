@@ -1,5 +1,5 @@
 <template>
-    <div class="px-3 py-4 flex items-center justify-between">
+    <div class="px-3 py-4 flex items-center justify-between" style="height : 12vh;">
         
         <div class="flex items-center">
             <router-link to="/home">

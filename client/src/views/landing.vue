@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full">
+  <div class="w-full relative overflow-hidden" style="height : 88vh;">
     <h1 class="text-8xl mont font-semibold pl-24 pt-24 text-dark">Echo,<br>Come Connect!</h1>
     <p class="relative mont text-md mont font-medium w-1/2 pl-24 pt-6 bg-white">Share with a community passionate about keeping history alive. Dive into the depths of tradition with <span class="">Echo</span>. Join us and rediscover India's rich heritage.</p>
     <div class="flex mt-6 w-1/5 justify-start">
@@ -10,7 +10,7 @@
         <button class=" rounded-full pl-16 pr-16 pt-3 pb-3 bg-white text-md text-dark border-dashed border-dark border-2 ml-4 max-h-16">SignUp</button>
       </RouterLink>
     </div>
-
+    <img src="..\assets\ripples.png" alt="" class="absolute bottom-0 -right-36">
   </div>
 </template>
 
