@@ -4,11 +4,11 @@
         <div class="bg-white shadow-md rounded overflow-hidden" @click="handleSearch(card.genre)">
           <div class="relative" >
             <img :src="card.image" alt="Card image" style="height : 70vh;" class="w-full object-cover rounded-xl hover:rounded-lg">
+            <div class="absolute bottom-0 left-0 right-0 p-4">
+              <h2 class="text-lg font-bold text-white opacity-100 mont">{{ card.title }}</h2>
+              <p class="text-gray-200 opacity-100 mont">{{ card.description }}</p>
+            </div>
             <div class="absolute inset-0 bg-black opacity-0 hover:opacity-50 transition duration-300 rounded-lg">
-              <div class="absolute bottom-0 left-0 right-0 p-4">
-                <h2 class="text-lg font-bold text-white opacity-100 mont">{{ card.title }}</h2>
-                <p class="text-gray-200 opacity-100 mont">{{ card.description }}</p>
-              </div>
             </div>
           </div>
         </div>
